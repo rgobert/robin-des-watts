@@ -9,6 +9,12 @@ Claire a des panneaux solaires et une batterie virtuelle. Elle fête sa premièr
 
 Le CPO suit en direct, dans un back-office, ce que les clients activent.
 
+## Vidéos
+[![Mon année 2 : un seul réglage gratuit compense la hausse](videos/mon-annee-2.jpg)](videos/mon-annee-2_20s.mp4)
+
+- [**Mon année 2**](videos/mon-annee-2_20s.mp4) (20 s) : la rétro d'anniversaire, puis le simulateur qui fait passer l'année 2 de −184 € à +202 €.
+- [**Piloter, c'est mieux**](videos/piloter-cest-mieux_bo_27s.mp4) (27 s) : le back-office live, côté CPO.
+
 ## Écrans
 - **`/` · Rétro.** La hausse du 1/11, chiffrée pour Claire, puis sa première année racontée en slides.
 - **`/annee-2` · Simulateur.** Il rejoue les 35 040 pas de 15 min de 2026 avec les leviers choisis : MySmartPilot, ballon à midi, électroménager décalé, capacité 20/100/300 kWh. Il classe ensuite ces leviers honnêtement, y compris le piège à éviter : passer à 300 kWh coûte plus cher que ce que l'on stocke.
