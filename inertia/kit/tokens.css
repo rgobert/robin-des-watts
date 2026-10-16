@@ -1,0 +1,164 @@
+/*
+ * UX kit · tokens
+ *
+ * On ne touche QUE la couche 1 (valeurs --ds-*) pour y coller le DS partagé.
+ * Les composants consomment uniquement la couche 2 (classes Tailwind : bg-primary, text-ink…).
+ * Couche 1 = DS Regenerativ 23.8.0 de MyLight150.
+ * Contrastes recalculés le 14/10 sur ces valeurs : texte ≥ 4,5:1, couleurs de données ≥ 3:1 sur canvas, surface et surface-2.
+ * Quand une valeur du DS échoue, on garde sa teinte et on baisse sa luminosité (valeur DS d'origine en commentaire).
+ */
+
+/* ---------- 1. Couche DS (Regenerativ 23.8.0) ---------- */
+:root {
+  /* Couleurs de marque */
+  --ds-primary: #427179;          /* petrol 500 #45767e (primary default), foncé de 2 % pour 4,5:1 sur surface-2 */
+  --ds-primary-contrast: #ffffff;
+  --ds-accent: #7dacb4;           /* petrol 300, lisible sur fond sombre (toast) */
+
+  /* Surfaces et texte : fonds de page limités à white et gray-50 par le DS */
+  --ds-canvas: #f9fafb;           /* gray-50 (cime.white.dark) */
+  --ds-surface: #ffffff;
+  --ds-surface-2: #f8ebd9;        /* brown 100, surface ton sur ton */
+  --ds-border: #d8dddd;           /* neutral 200 */
+  --ds-ink: #191e1e;              /* neutral 800 */
+  --ds-ink-muted: #5a6767;        /* foncé de neutral 500 #627070 pour 4,5:1 sur surface-2 */
+
+  /* États : le DS ne donne pas les hex de success / warning / error, valeurs du kit conservées */
+  --ds-success: #2c7861;          /* foncé de #2d7a62 pour 4,5:1 sur surface-2 */
+  --ds-warning: #806400;
+  --ds-danger: #a84838;
+
+  /* Sémantique énergie : couleurs métier du DS (500), un sens = une couleur, partout */
+  --ds-solar: #a7830a;            /* solar production #e8b60e, foncé pour ≥ 3:1 → jaune d'origine dans --ds-sun */
+  --ds-battery: #2e92b2;          /* battery charge #5db8d5, foncé pour ≥ 3:1 */
+  --ds-grid: #7a8b8a;             /* racking (réseau) #abb6b5, foncé pour ≥ 3:1 */
+  --ds-home: #8b5cf6;             /* site consumption, valeur DS exacte */
+  --ds-reward: #3e9778;           /* economy #5abb99, foncé pour ≥ 3:1 */
+
+  --ds-sun: #e8b60e;              /* solar production exact, réservé aux illustrations (soleil, loops), jamais pour de la donnée */
+  --ds-sky: #d8f3f7;              /* petrol 100, ciel de jour des illustrations */
+  --ds-skeleton: #eaeded;         /* neutral 100 */
+
+  /* Typo : Inter, chargée dans resources/views/inertia_layout.edge */
+  --ds-font-display: "Inter", system-ui, sans-serif;
+  --ds-font-body: "Inter", system-ui, sans-serif;
+
+  /* Formes : cartes rounded-lg 8px, ombres rares */
+  --ds-radius-sm: 6px;
+  --ds-radius-md: 8px;
+  --ds-radius-lg: 12px;
+  --ds-shadow-card: 0 1px 2px rgb(25 30 30 / 0.05), 0 6px 20px -12px rgb(25 30 30 / 0.16);
+
+  /* Extension DA piste A « le compteur qui bascule » */
+  --ds-hike: #a84838;             /* = danger, la hausse du 1/11 */
+  --ds-hike-surface: #f8ebd9;     /* brown 100, surface de l'état « hausse » */
+  --ds-win: #2c7861;              /* = success, « gagnante » */
+  --ds-win-surface: #e8f9f3;      /* menthe de mylight150.com (le DS nomme success.lightest sans hex) */
+  --ds-sun-glow: rgb(232 182 14 / 0.28); /* halo unique à la traversée de zéro (dérivé de sun) */
+  --ds-gauge-track: #eaeded;      /* neutral 100 */
+  --ds-gauge-marker: #191e1e;     /* ink, repère « hausse compensée » */
+  --ds-proj-border: #d8dddd;      /* neutral 200, pointillé des étiquettes « projeté » */
+  --ds-num-hero-size: clamp(3.5rem, 12vw, 4.5rem);
+}
+
+/* ---------- 2. Couche kit (ne pas modifier, sauf pour ajouter un token) ---------- */
+@theme inline {
+  --color-primary: var(--ds-primary);
+  --color-primary-contrast: var(--ds-primary-contrast);
+  --color-accent: var(--ds-accent);
+  --color-canvas: var(--ds-canvas);
+  --color-surface: var(--ds-surface);
+  --color-surface-2: var(--ds-surface-2);
+  --color-line: var(--ds-border);
+  --color-ink: var(--ds-ink);
+  --color-ink-muted: var(--ds-ink-muted);
+  --color-success: var(--ds-success);
+  --color-warning: var(--ds-warning);
+  --color-danger: var(--ds-danger);
+  --color-solar: var(--ds-solar);
+  --color-battery: var(--ds-battery);
+  --color-grid: var(--ds-grid);
+  --color-home: var(--ds-home);
+  --color-reward: var(--ds-reward);
+  --color-sun: var(--ds-sun);
+  --color-sky: var(--ds-sky);
+  --color-skeleton: var(--ds-skeleton);
+  --color-hike: var(--ds-hike);
+  --color-hike-surface: var(--ds-hike-surface);
+  --color-win: var(--ds-win);
+  --color-win-surface: var(--ds-win-surface);
+  --color-sun-glow: var(--ds-sun-glow);
+  --color-gauge-track: var(--ds-gauge-track);
+  --color-gauge-marker: var(--ds-gauge-marker);
+  --color-proj-border: var(--ds-proj-border);
+
+  --text-num-hero: var(--ds-num-hero-size);
+
+  --font-display: var(--ds-font-display);
+  --font-body: var(--ds-font-body);
+
+  --radius-sm: var(--ds-radius-sm);
+  --radius-md: var(--ds-radius-md);
+  --radius-lg: var(--ds-radius-lg);
+  --shadow-card: var(--ds-shadow-card);
+}
+
+/* ---------- 3. Motion (miroir de motion.ts pour le CSS pur) ---------- */
+:root {
+  --dur-instant: 100ms;
+  --dur-fast: 180ms;
+  --dur-base: 260ms;
+  --dur-slow: 420ms;
+  --dur-story: 700ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1); /* easing du site */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-count: 900ms;             /* roulement du compteur €, seule animation signature */
+  --dur-count-stagger: 40ms;      /* décalage par chiffre */
+  --ease-settle: cubic-bezier(0.34, 1.3, 0.64, 1); /* overshoot léger, jauge seulement */
+}
+
+@keyframes kit-shimmer {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}
+.kit-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgb(255 255 255 / 0.55) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: kit-shimmer 1.4s var(--ease-in-out) infinite;
+}
+
+@keyframes kit-flow {
+  to { stroke-dashoffset: -28; }
+}
+.kit-flow {
+  stroke-dasharray: 4 10;
+  animation: kit-flow var(--flow-speed, 1.2s) linear infinite;
+}
+
+@keyframes kit-spin { to { transform: rotate(360deg); } }
+.kit-spin { animation: kit-spin 0.9s linear infinite; }
+
+@keyframes kit-rays { to { transform: rotate(360deg); } }
+@keyframes kit-halo {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50% { transform: scale(1.18); opacity: 0.12; }
+}
+@keyframes kit-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes kit-caret { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .kit-shimmer,
+  .kit-flow,
+  .kit-spin,
+  [data-kit-loop] * {
+    animation: none !important;
+  }
+}
